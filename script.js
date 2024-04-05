@@ -53,11 +53,78 @@ img.addEventListener('click', callback);
 const animaisLista = document.querySelector('.animais-lista');
 
 function executarCallBack(event){
-    const currentTarget = event.currentTarget; // this
+    const currentTarget = event.currentTarget; // this -> referente ao item selecionado, no caso animaisLista
     const target = event.target; // onde o clique ocorreu
     const type = event.type; // tipo de evento
-    const path = event.path; 
+    const path = event.path;
     console.log(currentTarget, target, type, path);
 }
 
 animaisLista.addEventListener('click', executarCallBack);
+
+
+// event.preventDefault()
+// Previne o comportamento padrão do evento no browser. 
+// No caso de um externo, por exemplo, irá previnir que o link seja ativo.
+
+const linkExterno = document.querySelector('a[href^="https"]');
+
+function clickNoLink(event){
+    event.preventDefault();
+    console.log(event);
+}
+
+linkExterno.addEventListener('click', clickNoLink);
+
+
+// this
+// A palavra chave this é uma palavra especial de JavaScript,
+// que pode fazer referência a diferentes objetos dependendo do contexto.
+// No caso de eventos, ele fará referência ao elemento em que addEventListener foi adicionado.
+
+const img2 = document.querySelector('img');
+
+function callback(event){
+    console.log(this); // retorna a imagem
+    console.log(this.getAttribute('src'));
+}
+
+img.addEventListener('click', callback);
+
+/*
+    Geralmente igual ao event.currentTarget
+*/
+
+
+// Diferentes Eventos
+// Existem diversos eventos como **click**, **scroll**, **resize**,
+// **keydown(quando preciona a tecla)**, **keyup(quando solta a tecla)**, **mouseenter(qundo passa o mouse por cima)**, e mais.
+// Eventos podem ser adicionados a diferentes elementos, como o **window** e **document** também.
+
+const h1 = document.querySelector('h1');
+
+function cb(event){
+    console.log(event.type, event);
+}
+
+h1.addEventListener('click', cb);
+h1.addEventListener('mouseenter', cb);
+
+window.addEventListener('scroll', cb);
+window.addEventListener('resize', cb);
+window.addEventListener('keydown', cb);
+
+
+// Keyboard
+// Você pode adicionar atalhos para facilitar a navegação no seu site,
+// através de eventos **keyboard**.
+
+function handleKeyboard(event){
+    if(event.key === 'a'){
+        document.body.classList.toggle('azul');
+    }else if(event.key === 'v'){
+        document.body.classListl.toogle('vermelho');
+    }
+}
+
+window.addEventListener('keydown', callback);
