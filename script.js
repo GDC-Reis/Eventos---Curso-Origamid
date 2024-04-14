@@ -4,7 +4,7 @@
 
 const img = document.querySelector('img');
 
-// elemento.addEventListener(event, callback, options)
+// elemento.addEventListener(event(evento), callback(função que sera ativada), options(opcional))
 img.addEventListener('click', () => {
     console.log('Clicou 1');
 })
@@ -56,7 +56,7 @@ function executarCallBack(event){
     const currentTarget = event.currentTarget; // this -> referente ao item selecionado, no caso animaisLista
     const target = event.target; // onde o clique ocorreu
     const type = event.type; // tipo de evento
-    const path = event.path;
+    const path = event.path; // caminho
     console.log(currentTarget, target, type, path);
 }
 
@@ -65,7 +65,7 @@ animaisLista.addEventListener('click', executarCallBack);
 
 // event.preventDefault()
 // Previne o comportamento padrão do evento no browser. 
-// No caso de um externo, por exemplo, irá previnir que o link seja ativo.
+// No caso de um link externo, por exemplo, irá previnir que o link seja ativo.
 
 const linkExterno = document.querySelector('a[href^="https"]');
 
@@ -128,3 +128,16 @@ function handleKeyboard(event){
 }
 
 window.addEventListener('keydown', callback);
+
+//forEach e Eventos
+// O métodos **addEventListener** é adicionado á um unico elemento, então é necessário um loop de entre elementos ded uma lista, para adicionalos à cada um deles.
+const imgs = document.querySelectorAll('img');
+
+function handleImg(event){
+    const src = event.currentTarget.getAttribute('src');
+    console.log('SRC:', src);
+}
+
+imgs.forEach((img) => {
+    img.addEventListener('click', handleImg);
+});
