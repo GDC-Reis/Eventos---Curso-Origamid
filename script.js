@@ -53,7 +53,7 @@ img.addEventListener('click', callback);
 const animaisLista = document.querySelector('.animais-lista');
 
 function executarCallBack(event){
-    const currentTarget = event.currentTarget; // this -> referente ao item selecionado, no caso animaisLista
+    const currentTarget = event.currentTarget; // event ou this -> referente ao item selecionado, no caso animaisLista
     const target = event.target; // onde o clique ocorreu
     const type = event.type; // tipo de evento
     const path = event.path; // caminho
