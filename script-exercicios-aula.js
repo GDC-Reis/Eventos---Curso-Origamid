@@ -13,8 +13,8 @@ const linksInternos = document.querySelectorAll('a[href^="#"]');
 function handleLink(event){
     event.preventDefault(); // Previne o comportamento padrão.
 
-    linksInternos.forEach((link) => {   // Remove o link ativo.
-        link.classList.remove('ativo');
+    linksInternos.forEach((link) => {  //Realiza o loop e percorre cada item da constante linksInternos
+        link.classList.remove('ativo'); // Para cada link percorrido ele remove a classe ativo
     })
 
     event.currentTarget.classList.add('ativo'); // Adiciona a classe ativo ao currentTarget.
